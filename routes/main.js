@@ -9,14 +9,14 @@ const routes = async (fastify, options) => {
       })
    })
 
-   fastify.get('/tiktok', async (value) => {
+   fastify.get('/tiktok', async (req, res) => {
       const url = req.query.url
       if (!url) return ({
          creator: global.creator,
          status: false,
          msg: `"url" parameter required!`
       })
-      const json = await tiktok(value)
+      const json = await tiktok(url)
       return res.send({
          status: true,
          creator: global.creator,
