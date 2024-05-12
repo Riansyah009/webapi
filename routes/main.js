@@ -1,4 +1,4 @@
-const shorten = require('../lib/sid')
+zconst shorten = require('../lib/sid')
 const tiktok = require('../lib/tiktok')
 const routes = async (fastify, options) => {
    fastify.get('/', async (req, res) => {
@@ -37,6 +37,19 @@ const routes = async (fastify, options) => {
    })
 
 
+
+   fastify.get('/gpt', async (req, res) => {
+      const query = req.query.url
+      if (!query) return ({
+         creator: global.creator,
+         status: false,
+         msg: `"query" parameter required!`
+      })
+      const json = await gpt(query)
+      return res.send(json)
+   })
+
+   
    fastify.get('/short', async (req, res) => {
       const url = req.query.url
       if (!url) return ({
