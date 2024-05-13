@@ -40,7 +40,7 @@ const routes = async (fastify, options) => {
 
 
    fastify.get('/gpt', async (req, res) => {
-      const query = req.query.url
+      const query = req.query
       if (!query) return ({
          creator: global.creator,
          status: false,
