@@ -1,6 +1,6 @@
 const shorten = require('../lib/sid')
 const tiktok = require('../lib/tiktok')
-const gpt = require('../lib/gpt')
+const gpt = require('../lib/ai')
 const routes = async (fastify, options) => {
    fastify.get('/', async (req, res) => {
       return ({
